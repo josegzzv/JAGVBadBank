@@ -25,6 +25,7 @@ JAG Bad Bank is a modern web application designed to manage banking transactions
 To get started with JAG Bad Bank, follow these steps:
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/josegzzv/jag-bad-bank.git
    ```
