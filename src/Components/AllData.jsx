@@ -24,7 +24,7 @@ function AllData() {
       <div className="container">
         <div className="row justify-content-md-center">
           <div className="card w-50">
-          <h5 class="card-header">All Data</h5>
+          <h5 className="card-header">All Data</h5>
             <div className="card-body">
               <h5 className="card-title">{currentUser.name}</h5>
               <h6 className="card-subtitle mb-2 text-body-secondary">

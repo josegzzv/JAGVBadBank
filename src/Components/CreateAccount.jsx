@@ -155,7 +155,7 @@ function CreateAccount() {
                     </div>
                   </div>
                 </div>
-                <button className="btn btn-info" type="submit">
+                <button className="btn btn-primary" type="submit" disabled={!validationState.name || !validationState.email || !validationState.password}>
                   Create Account
                 </button>
               </form>{" "}

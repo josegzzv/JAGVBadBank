@@ -1,4 +1,4 @@
-# JAG Bad Bank
+# JAGV Bad Bank
 
 ## Description
 

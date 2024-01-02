@@ -24,7 +24,7 @@ function Deposit() {
   const handleAmountChange = (e) => {
     const value = e.target.value;
     setAmount(value);
-    const isValid = !isNaN(value) && value.trim() !== "";
+    const isValid = !isNaN(value) && value.trim() !== "" && parseFloat(value) > 0;
     setIsAmountValid(isValid);
   };
   const handleFocus = (event) => {
@@ -80,7 +80,7 @@ function Deposit() {
                   />
                   <span className="input-group-text">.00</span>
                 </div>
-                <button className="btn btn-info" onClick={handleDeposit}>
+                <button className="btn btn-primary" onClick={handleDeposit} disabled={!isAmountValid}>
                   Deposit
                 </button>
               </div>
