@@ -12,6 +12,7 @@ function CreateAccount() {
     email: null,
     password: null,
   });
+  const [accountCreated, setAccountCreated] = useState(false);
 
   const handleInputChange = (e) => {
     let isValid = false;
@@ -64,6 +65,8 @@ function CreateAccount() {
     if (result.success) {
       setMessage({ text: result.message, type: "success" });
       setNewUser({ name: "", email: "", password: "" });
+      setValidationState({ name: null, email: null, password: null });
+      setAccountCreated(true);
     } else {
       setMessage({ text: result.message, type: "danger" });
     }
@@ -156,7 +159,7 @@ function CreateAccount() {
                   </div>
                 </div>
                 <button className="btn btn-primary" type="submit" disabled={!validationState.name || !validationState.email || !validationState.password}>
-                  Create Account
+                {accountCreated ? "Create Another Account" : "Create Account"}
                 </button>
               </form>{" "}
             </div>

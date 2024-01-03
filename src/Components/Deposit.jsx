@@ -26,7 +26,20 @@ function Deposit() {
     setAmount(value);
     const isValid = !isNaN(value) && value.trim() !== "" && parseFloat(value) > 0;
     setIsAmountValid(isValid);
+    
+    if (isNaN(value)) {
+      setMessage({ text: "Please enter a numeric value", type: "danger" });
+    } else {
+      setMessage({ text: "", type: "" });
+    }
+
+    if (parseFloat(value)<0) {
+      setMessage({ text: "Please enter a positive numeric value", type: "danger" });
+    } else {
+      setMessage({ text: "", type: "" });
+    }
   };
+
   const handleFocus = (event) => {
     event.target.select();
   };
@@ -78,7 +91,6 @@ function Deposit() {
                     } ${isAmountValid === false ? "is-invalid" : ""}`}
                     aria-label="Amount (to the nearest dollar)"
                   />
-                  <span className="input-group-text">.00</span>
                 </div>
                 <button className="btn btn-primary" onClick={handleDeposit} disabled={!isAmountValid}>
                   Deposit

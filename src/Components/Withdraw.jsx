@@ -24,9 +24,22 @@ function Withdraw() {
   const handleAmountChange = (e) => {
     const value = e.target.value;
     setAmount(value);
-    const isValid = !isNaN(value) && value.trim() !== "" && parseFloat(value) > 0;
+    const isValid = !isNaN(value) && value.trim() !== "" && parseFloat(value) > 0 && (parseFloat(value)<=parseFloat(loggedInUser.balance));
     setIsAmountValid(isValid);
+
+    if (isNaN(value)) {
+      setMessage({ text: "Please enter a numeric value", type: "danger" });
+    } else {
+      setMessage({ text: "", type: "" });
+    }
+
+    if (parseFloat(value)>parseFloat(loggedInUser.balance)){
+      setMessage({ text: "Amount exceeds balance.", type: "danger" });
+    } else {
+      setMessage({ text: "", type: "" });
+    }
   };
+
   const handleFocus = (event) => {
     event.target.select();
   };
@@ -78,7 +91,7 @@ function Withdraw() {
                     } ${isAmountValid === false ? "is-invalid" : ""}`}
                     aria-label="Amount (to the nearest dollar)"
                   />
-                  <span className="input-group-text">.00</span>
+                  
                 </div>
                 <button className="btn btn-primary" onClick={handleWithdraw} disabled={!isAmountValid}>
                   Withdraw
