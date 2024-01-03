@@ -26,10 +26,23 @@ function Navbar() {
   }
 
   function getNavLinkClass(path) {
+    if (
+      path === "/" &&
+      (location.pathname === "/" ||
+        location.pathname === "/index.html" ||
+        location.pathname == undefined)
+    ) {
+      return "nav-link active hover";
+    }
     return location.pathname === path
       ? "nav-link active hover"
       : "nav-link hover";
   }
+  // function getNavLinkClass(path) {
+  //   return location.pathname === path
+  //     ? "nav-link active hover"
+  //     : "nav-link hover";
+  // }
 
   return (
     <>
@@ -139,7 +152,7 @@ function Navbar() {
                     className="navbar-avatar rounded-circle"
                     alt="User Avatar"
                   />{" "}
-                  {!isLoggedIn ? ("Sign In") : (users[userLoggedInIndex].name)}
+                  {!isLoggedIn ? "Sign In" : users[userLoggedInIndex].name}
                 </button>
                 <ul className="dropdown-menu dropdown-menu-dark">
                   {!isLoggedIn ? (
